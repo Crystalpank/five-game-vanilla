@@ -58,20 +58,14 @@ const fiveGame = (hiddenWord) => {
         } else if (currentAttempt !== totalAttempt - 1) {
             let firstIndex = 0
             answer.split("").map((letter, index) => {
-                keyButtons[index].classList.add("disabled-word")
-                if (hiddenWord.includes(letter)) {
-                    firstIndex = answer.indexOf(letter)
-                    letters[firstIndex].classList.add("almostHit-letter")
-                    keyButtons[firstIndex].classList.add("almostHit-letter")
-                }
                 if (hiddenWord.at(index) === letter) {
-                    keyButtons[index].classList.remove("disabled-word")
-                    letters[index].classList.add("hit-letter")
                     keyButtons[index].classList.add("hit-letter")
-                    if (letter === letters[firstIndex].innerText) {
-                        letters[firstIndex].classList.remove("almostHit-letter")
-                        keyButtons[firstIndex].classList.remove("almostHit-letter")
-                    }
+                    letters[index].classList.add("hit-letter")
+                }else if(hiddenWord.includes(letter)){
+                    letters[index].classList.add("almostHit-letter")
+                    keyButtons[index].classList.add("almostHit-letter")
+                }else{
+                    keyButtons[index].classList.add("disabled-word")
                 }
             })
             keyButtons.length = 0
