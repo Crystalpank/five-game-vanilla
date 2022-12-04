@@ -61,9 +61,14 @@ const fiveGame = (hiddenWord) => {
                 if (hiddenWord.at(index) === letter) {
                     keyButtons[index].classList.add("hit-letter")
                     letters[index].classList.add("hit-letter")
+                    firstIndex = answer.indexOf(letter)
+                    if (letter === letters[firstIndex].innerText) {
+                        letters[firstIndex].classList.remove("almostHit-letter")
+                        keyButtons[firstIndex].classList.remove("almostHit-letter")
+                    }
                 }else if(hiddenWord.includes(letter)){
-                    letters[index].classList.add("almostHit-letter")
-                    keyButtons[index].classList.add("almostHit-letter")
+                    letters[firstIndex].classList.add("almostHit-letter")
+                    keyButtons[firstIndex].classList.add("almostHit-letter")
                 }else{
                     keyButtons[index].classList.add("disabled-word")
                 }
@@ -148,4 +153,3 @@ fetch("https://crystalpank.ru/server.php", {
     method: 'POST',
     body: JSON.stringify({ param: "getWord" })
 }).then(res => res.json()).then(res => fiveGame(res))
-
