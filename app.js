@@ -67,8 +67,10 @@ const fiveGame = (hiddenWord) => {
                     //     keyButtons[firstIndex].classList.remove("almostHit-letter")
                     // }
                 }else if(hiddenWord.includes(letter)){
-                    letters[firstIndex].classList.add("almostHit-letter")
-                    keyButtons[firstIndex].classList.add("almostHit-letter")
+                    if (!letters[firstIndex].classList.contains("hit-letter") || !keyButtons[firstIndex].classList.contains("hit-letter")){
+                        letters[index].classList.add("almostHit-letter")
+                        keyButtons[index].classList.add("almostHit-letter")
+                    }
                 }else{
                     keyButtons[index].classList.add("disabled-word")
                 }
