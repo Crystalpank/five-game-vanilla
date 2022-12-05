@@ -56,16 +56,16 @@ const fiveGame = (hiddenWord) => {
             })
             endGame("win")
         } else if (currentAttempt !== totalAttempt - 1) {
-            let firstIndex = 0
             answer.split("").map((letter, index) => {
+                let firstIndex = answer.indexOf(letter)
                 if (hiddenWord.at(index) === letter) {
                     keyButtons[index].classList.add("hit-letter")
                     letters[index].classList.add("hit-letter")
-                    firstIndex = answer.indexOf(letter)
-                    if (letter === letters[firstIndex].innerText) {
-                        letters[firstIndex].classList.remove("almostHit-letter")
-                        keyButtons[firstIndex].classList.remove("almostHit-letter")
-                    }
+                     
+                    // if (letter === letters[firstIndex].innerText) {
+                    //     letters[firstIndex].classList.remove("almostHit-letter")
+                    //     keyButtons[firstIndex].classList.remove("almostHit-letter")
+                    // }
                 }else if(hiddenWord.includes(letter)){
                     letters[firstIndex].classList.add("almostHit-letter")
                     keyButtons[firstIndex].classList.add("almostHit-letter")
